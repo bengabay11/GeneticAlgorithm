@@ -1,7 +1,10 @@
+import random
+
 from PIL import Image
 from wx.core import wx
 import configuration
 from BLL.population import Population
+from scripts.BLL.genetic_algorithm import start
 from scripts.UI.main_frame import MainFrame
 
 
@@ -38,11 +41,24 @@ def start_algorithm():
     population.sort_chromosomes()
 
 
-def main():
+def start_ui():
     app = wx.App()
     original_img_frame = MainFrame()
     original_img_frame.Show()
     app.MainLoop()
+
+
+def generate_random_target_chromosome(length):
+    target_chromosome = []
+    for i in xrange(length):
+        target_chromosome.append(random.randint(0, 1))
+
+    return target_chromosome
+
+
+def main():
+    # target_chromosome = get_image_values()
+    start(generate_random_target_chromosome(100))
 
 
 if __name__ == '__main__':
