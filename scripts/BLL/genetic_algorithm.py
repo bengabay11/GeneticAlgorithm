@@ -1,11 +1,17 @@
 import random
 from scripts import configuration
+from scripts.BLL.population import Population
 
 
 def start(target_chromosome):
     best_fitness = 0
+    population = Population(configuration.POPULATION_SIZE, target_chromosome)
+    population.init_chromosomes()
     while best_fitness < len(target_chromosome):
-        pass
+        parents = selection(population)
+        crossover(parents)
+        for chromosome in population.get_chromosomes():
+            mutation(chromosome)
 
 
 def selection(population):
@@ -30,7 +36,17 @@ def selection(population):
     return parents
 
 
-def crossover(father_chromosome, mother_chromosome):
+def crossover(parents):
+    index = 0
+    while index < len(parents):
+        if index + 1 < len(parents):
+            create_offsprings(parents[index], parents[index + 1])
+            index += 2
+        else:
+            index += 1
+
+
+def create_offsprings(father_chromosome, mother_chromosome):
     if random.random < configuration.CROSSOVER_PROBABILITY:
         crossover_point = random.randint(0, len(father_chromosome.get_genes()))
         for i in xrange(crossover_point):
@@ -45,4 +61,3 @@ def mutation(chromosome):
         new_value = random.randint(configuration.MIN_GENE_NUMBER, configuration.MAX_GENE_NUMBER)
         mutated_chromosome = list(chromosome)
         mutated_chromosome[index] = new_value
-        return mutated_chromosome
