@@ -1,6 +1,8 @@
 from PIL import Image
+from wx.core import wx
 import configuration
-from population import Population
+from BLL.population import Population
+from UI.original_image_frame import OriginalImageFrame
 
 
 def get_image_values():
@@ -30,7 +32,7 @@ def show_image(pixels):
     image.show()
 
 
-def start_algorithmm():
+def start_algorithm():
     target_chromosome = get_image_values()
     population = Population(configuration.POPULATION_SIZE, target_chromosome)
     population.sort_chromosomes()
