@@ -7,9 +7,14 @@ from scripts import configuration
 class MainFrame(wx.Frame):
 
     def __init__(self):
-        wx.Frame.__init__(self, None, -1, size=(480, 260))
+        wx.Frame.__init__(self, None, -1, size=configuration.FRAME_SIZE)
 
         self.Center()
+
+        icon = wx.Icon()
+        icon.CopyFromBitmap(wx.Bitmap(configuration.ICON__PATH))
+        self.SetIcon(icon)
+
         splitter = wx.SplitterWindow(self)
         self.original_image_panel = OriginalImagePanel(splitter)
         self.new_image_panel = NewImagePanel(splitter)

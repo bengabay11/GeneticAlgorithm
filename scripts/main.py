@@ -44,5 +44,6 @@ def main():
     original_img_frame.Show()
     app.MainLoop()
 
+
 if __name__ == '__main__':
     main()
