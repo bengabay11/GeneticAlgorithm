@@ -5,5 +5,7 @@ POPULATION_SIZE = 500
 MAX_GENE_NUMBER = 255
 MIN_GENE_NUMBER = 0
 
-IMAGE_PATH = "earth.jpg"
+IMAGE_PATH = "..\images\earth.jpg"
 OPEN_FILE_MODE = "r"
+
+IMAGES_RATIO = 0.5

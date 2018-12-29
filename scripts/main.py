@@ -2,7 +2,7 @@ from PIL import Image
 from wx.core import wx
 import configuration
 from BLL.population import Population
-from UI.original_image_frame import OriginalImageFrame
+from scripts.UI.main_frame import MainFrame
 
 
 def get_image_values():
@@ -40,7 +40,7 @@ def start_algorithm():
 
 def main():
     app = wx.App()
-    original_img_frame = OriginalImageFrame()
+    original_img_frame = MainFrame()
     original_img_frame.Show()
     app.MainLoop()
 
