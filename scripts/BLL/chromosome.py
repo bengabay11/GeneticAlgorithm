@@ -1,6 +1,5 @@
 import random
-
-from scripts import configuration
+import string
 
 
 class Chromosome:
@@ -10,7 +9,7 @@ class Chromosome:
 
     def init_genes(self):
         for i in xrange(len(self._target_chromosome)):
-            self.genes.append(random.randint(configuration.MIN_GENE_NUMBER, configuration.MAX_GENE_NUMBER))
+            self.genes.append(random.choice(string.letters + " ."))
 
     def get_fitness(self):
         fitness = 0

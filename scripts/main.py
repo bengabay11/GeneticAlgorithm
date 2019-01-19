@@ -1,15 +1,14 @@
 import random
-
 from PIL import Image
 from wx.core import wx
-import configuration
+import config
 from BLL.population import Population
-from scripts.BLL.genetic_algorithm import start
+from scripts.BLL.genetic_algorithm import GeneticAlgorithm
 from scripts.UI.main_frame import MainFrame
 
 
 def get_image_values():
-    im = Image.open(configuration.IMAGE_PATH, configuration.OPEN_FILE_MODE)
+    im = Image.open(config.IMAGE_PATH, config.OPEN_FILE_MODE)
     pixels = list(im.getdata())
     pixels_list = []
     for pixel in pixels:
@@ -30,14 +29,14 @@ def image_values_to_pixels(pixels_list):
 
 
 def show_image(pixels):
-    image = Image.new(configuration.COLOR_MODEL, configuration.IMAGE_SIZE)
+    image = Image.new(config.COLOR_MODEL, config.IMAGE_SIZE)
     image.putdata(pixels)
     image.show()
 
 
 def start_algorithm():
     target_chromosome = get_image_values()
-    population = Population(configuration.POPULATION_SIZE, target_chromosome)
+    population = Population(config.POPULATION_SIZE, target_chromosome)
     population.sort_chromosomes()
 
 
@@ -58,8 +57,7 @@ def generate_random_target_chromosome(length):
 
 def main():
     # target_chromosome = get_image_values()
-    start(generate_random_target_chromosome(100))
-
-
+    genetic_algorithm = GeneticAlgorithm(config.PHRASE)
+    genetic_algorithm.start_algorithm()
 if __name__ == '__main__':
     main()

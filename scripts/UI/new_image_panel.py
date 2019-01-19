@@ -1,5 +1,5 @@
 from wx.core import wx
-from scripts import configuration
+from scripts import config
 
 
 class NewImagePanel(wx.Panel):
