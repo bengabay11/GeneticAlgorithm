@@ -8,12 +8,12 @@ class Chromosome:
         self._target_chromosome = target_chromosome
 
     def init_genes(self):
-        for i in xrange(len(self._target_chromosome)):
+        for i in range(len(self._target_chromosome)):
             self.genes.append(random.choice(string.letters + " ."))
 
     def get_fitness(self):
         fitness = 0
-        for i in xrange(len(self.genes)):
+        for i in range(len(self.genes)):
             if self.genes[i] == self._target_chromosome[i]:
                 fitness += 1
 

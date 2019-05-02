@@ -1,8 +1,8 @@
 import random
 from PIL import Image
 from wx.core import wx
-import config
-from BLL.population import Population
+from . import config
+from .BLL.population import Population
 from scripts.BLL.genetic_algorithm import GeneticAlgorithm
 from scripts.UI.main_frame import MainFrame
 
@@ -49,7 +49,7 @@ def start_ui():
 
 def generate_random_target_chromosome(length):
     target_chromosome = []
-    for i in xrange(length):
+    for i in range(length):
         target_chromosome.append(random.randint(0, 1))
 
     return target_chromosome

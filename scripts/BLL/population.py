@@ -1,4 +1,4 @@
-from chromosome import Chromosome
+from .chromosome import Chromosome
 
 
 class Population:
@@ -8,7 +8,7 @@ class Population:
         self.chromosomes = []
 
     def init_chromosomes(self):
-        for i in xrange(self._population_size):
+        for i in range(self._population_size):
             new_chromosome = Chromosome(self._target_chromosome)
             new_chromosome.init_genes()
             self.chromosomes.append(new_chromosome)

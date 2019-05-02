@@ -1,6 +1,6 @@
 from wx.core import wx
-from original_image_panel import OriginalImagePanel
-from new_image_panel import NewImagePanel
+from .original_image_panel import OriginalImagePanel
+from .new_image_panel import NewImagePanel
 from scripts import config
 
 
