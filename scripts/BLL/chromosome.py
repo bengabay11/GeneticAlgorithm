@@ -9,7 +9,7 @@ class Chromosome:
 
     def init_genes(self):
         for i in range(len(self._target_chromosome)):
-            self.genes.append(random.choice(string.letters + " ."))
+            self.genes.append(random.choice(string.ascii_letters + " ."))
 
     def get_fitness(self):
         fitness = 0

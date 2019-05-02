@@ -63,9 +63,9 @@ class GeneticAlgorithm:
 
     def mutation(self):
         for chromosome in self._population.get_chromosomes():
-            if random.random < config.MUTATION_PROBABILITY:
-                index = random.randint(0, len(chromosome.get_genes()) - 1)
-                new_value = random.choice(string.letters)
+            if random.random() < config.MUTATION_PROBABILITY:
+                index = random.randint(0, len(chromosome.genes) - 1)
+                new_value = random.choice(string.ascii_letters)
                 chromosome.genes[index] = new_value
 
     def print_generation(self, generation_count):

@@ -1,8 +1,8 @@
 import random
 from PIL import Image
 from wx.core import wx
-from . import config
-from .BLL.population import Population
+from scripts import config
+from scripts.BLL.population import Population
 from scripts.BLL.genetic_algorithm import GeneticAlgorithm
 from scripts.UI.main_frame import MainFrame
 
