@@ -1,5 +1,5 @@
 import random
-from scripts import config
+import config
 from scripts.BLL.population import Population
 import string
 
@@ -24,6 +24,8 @@ class GeneticAlgorithm:
             best_chromosome = self._population.get_chromosomes()[0]
             best_fitness = best_chromosome.get_fitness()
             generation_count += 1
+            print("Best Fitness: " + str(best_fitness))
+            print("Best Chromosome: " + str(best_chromosome.genes))
 
         print("Best Fitness: " + str(best_fitness))
         print("Best Chromosome: " + str(best_chromosome.genes))
