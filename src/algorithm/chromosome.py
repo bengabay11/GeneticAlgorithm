@@ -18,6 +18,14 @@ class Chromosome:
     def genes(self, new_genes):
         self._genes = new_genes
 
+    @property
+    def target_chromosome(self):
+        return self._target_chromosome
+
+    @target_chromosome.setter
+    def target_chromosome(self, new_target_chromosome):
+        self._target_chromosome = new_target_chromosome
+
     def _init_genes(self):
         for i in range(len(self._target_chromosome)):
             self._genes.append(random.choice(string.ascii_letters + " ."))
@@ -25,7 +33,7 @@ class Chromosome:
     def get_fitness(self):
         fitness = 0
         for i in range(len(self._genes)):
-            if self.genes[i] == self._target_chromosome[i]:
+            if self._genes[i] == self._target_chromosome[i]:
                 fitness += 1
 
         return fitness

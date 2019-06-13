@@ -6,9 +6,9 @@ from src.algorithm.population import Population
 
 
 class GeneticAlgorithm:
-    def __init__(self, target_chromosome):
+    def __init__(self, target_chromosome, population_size):
         self._target_chromosome = target_chromosome
-        self._population = Population(config.POPULATION_SIZE, self._target_chromosome)
+        self._population = Population(population_size, self._target_chromosome)
         self._population.init_chromosomes()
 
     def start_algorithm(self):
