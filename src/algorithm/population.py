@@ -4,8 +4,8 @@ from .chromosome import Chromosome
 class Population:
     def __init__(self, size, target_chromosome):
         self._population_size = size
-        self._chromosomes = []
         self._target_chromosome = target_chromosome
+        self._chromosomes = self._init_chromosomes()
 
     @property
     def population_size(self):
@@ -17,9 +17,6 @@ class Population:
 
     @property
     def chromosomes(self):
-        if not self._chromosomes:
-            self._chromosomes = self._init_chromosomes()
-
         return self._chromosomes
 
     @chromosomes.setter

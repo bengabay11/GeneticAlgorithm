@@ -1,7 +1,6 @@
 import random
 from src import config
 import string
-
 from src.algorithm.population import Population
 
 
@@ -9,30 +8,26 @@ class GeneticAlgorithm:
     def __init__(self, target_chromosome, population_size):
         self._target_chromosome = target_chromosome
         self._population = Population(population_size, self._target_chromosome)
-        self._population.init_chromosomes()
 
     def start_algorithm(self):
         best_fitness = 0
         generation_count = 0
+        best_chromosome = None
         while best_fitness < len(self._target_chromosome):
             # self.print_generation(generation_count)
-
             self.selection()
             self.crossover()
             self.mutation()
 
             self._population.sort_chromosomes()
-            best_chromosome = self._population.get_chromosomes()[0]
-            best_fitness = best_chromosome.get_fitness()
+            best_chromosome = self._population.chromosomes[0]
             generation_count += 1
-            print("Best Fitness: " + str(best_fitness))
-            print("Best Chromosome: " + str(best_chromosome.genes))
+            self.print_current_generation(best_chromosome, generation_count)
 
-        print("Best Fitness: " + str(best_fitness))
-        print("Best Chromosome: " + str(best_chromosome.genes))
+        return best_chromosome
 
     def selection(self):
-        generation = self._population.get_chromosomes()
+        generation = self._population.chromosomes
         potential_parents = generation
         generation = []
         sum_fitness = 0
@@ -52,7 +47,7 @@ class GeneticAlgorithm:
             generation.append(potential_parents[chosen_chromosome_index])
 
     def crossover(self):
-        generation = self._population.get_chromosomes()
+        generation = self._population.chromosomes
         index = 0
         while index + 1 < len(generation):
             father_chromosome, mother_chromosome = generation[index], generation[index + 1]
@@ -65,14 +60,15 @@ class GeneticAlgorithm:
             index += 2
 
     def mutation(self):
-        for chromosome in self._population.get_chromosomes():
+        for chromosome in self._population.chromosomes:
             if random.random() < config.MUTATION_PROBABILITY:
                 index = random.randint(0, len(chromosome.genes) - 1)
                 new_value = random.choice(string.ascii_letters)
                 chromosome.genes[index] = new_value
 
-    def print_generation(self, generation_count):
-        print("-------------------------------------------")
-        print("Generation: " + str(generation_count))
-        print("Best chromosome: " + str(self._population.get_chromosomes()[0].genes) + \
-              ", " + str(self._population.get_chromosomes()[0].get_fitness()))
+    def print_current_generation(self, best_chromosome, generation_count):
+        best_chromosome_string = "".join(best_chromosome.genes)
+        best_fitness = best_chromosome.get_fitness()
+        print("Best Chromosome: {}".format(best_chromosome_string), end="\r")
+        print("Fitness: {}".format(str(best_fitness)), end="\r")
+        print("Generation: {}".format(str(generation_count)), end="\r")

@@ -4,14 +4,11 @@ import string
 
 class Chromosome:
     def __init__(self, target_chromosome):
-        self._genes = []
         self._target_chromosome = target_chromosome
+        self._genes = self._init_genes()
 
     @property
     def genes(self):
-        if not self._genes:
-            self._init_genes()
-
         return self._genes
 
     @genes.setter
@@ -27,8 +24,11 @@ class Chromosome:
         self._target_chromosome = new_target_chromosome
 
     def _init_genes(self):
+        genes = []
         for i in range(len(self._target_chromosome)):
-            self._genes.append(random.choice(string.ascii_letters + " ."))
+            genes.append(random.choice(string.ascii_letters + " ."))
+
+        return genes
 
     def get_fitness(self):
         fitness = 0
