@@ -14,7 +14,6 @@ class GeneticAlgorithm:
         generation_count = 0
         best_chromosome = None
         while best_fitness < len(self._target_chromosome):
-            # self.print_generation(generation_count)
             self.selection()
             self.crossover()
             self.mutation()
