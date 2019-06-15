@@ -21,8 +21,9 @@ class GeneticAlgorithm:
 
             self._population.sort_chromosomes()
             best_chromosome = self._population.chromosomes[0]
+            best_fitness = best_chromosome.get_fitness()
             generation_count += 1
-            self.print_current_generation(best_chromosome, generation_count)
+            self.print_current_generation(best_chromosome, best_fitness, generation_count)
 
         return best_chromosome
 
@@ -66,9 +67,8 @@ class GeneticAlgorithm:
                 new_value = random.choice(string.ascii_letters)
                 chromosome.genes[index] = new_value
 
-    def print_current_generation(self, best_chromosome, generation_count):
+    def print_current_generation(self, best_chromosome, best_fitness, generation_count):
         best_chromosome_string = "".join(best_chromosome.genes)
-        best_fitness = best_chromosome.get_fitness()
         print("Best Chromosome: {}".format(best_chromosome_string), end="\r")
         print("Fitness: {}".format(str(best_fitness)), end="\r")
         print("Generation: {}".format(str(generation_count)), end="\r")

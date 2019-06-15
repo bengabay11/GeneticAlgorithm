@@ -13,7 +13,8 @@ def main():
         if best_chromosome:
             end_time = time.time()
             final_time = end_time - start_time
-            print("Found the best chromosome in {} seconds.".format(final_time))
+            print("\nFound the best chromosome in {} seconds.".format(final_time))
+            print(best_chromosome)
         else:
             print("Can't find the target chromosome.")
     except Exception as e:
