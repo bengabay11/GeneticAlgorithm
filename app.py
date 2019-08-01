@@ -1,7 +1,7 @@
 import time
 
-from src import config
-from src.algorithm.genetic_algorithm import GeneticAlgorithm
+import config
+from algorithm.genetic_algorithm import GeneticAlgorithm
 
 
 def main():

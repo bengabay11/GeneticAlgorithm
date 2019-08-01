@@ -1,7 +1,8 @@
 import random
-from src import config
 import string
-from src.algorithm.population import Population
+
+import config
+from algorithm.population import Population
 
 
 class GeneticAlgorithm:
